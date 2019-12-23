@@ -1,7 +1,8 @@
 ## Shattered Image Effect with React Hook
 It is a tiny(100 lines of code) fun project using React Hook. Basically what it do is fragmentizing an image, scatter the image pieces, then restore the parts back to a whole image at the position of your choice.
 ![1](src/images/1.png)
-Double Click on a point in the browser
+<div text-align: center>Double Click on a point in the browser</div
+
 ![2](src/images/2.png)
 Image starts shattering
 ![3](src/images/3.png)
