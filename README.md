@@ -18,6 +18,7 @@ The image is restored as a whole at destination point.
 
 ### Basic ideas
 * Create a matrix of *div* elements, each div contains an *img* element
+<img align="left" width="188" height="128" src="src/images/fragments.png">
 ![fragments](src/images/fragments.png)
 * Use *position: aboslute* to control the position and size of each *div* in the grid
 * Use *transform: translate(x,y)* and *overflow: hidden* of the *div* to crop images into a calculated positions so that they can make up a whole image
