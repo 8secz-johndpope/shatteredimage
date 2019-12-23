@@ -1,27 +1,24 @@
-## Shattered Image Effect with React
-This is a fun project to fragmentize an image, scatter the image parts, then restore the fragments back to a whole image at another position.
+## Shattered Image Effect with React Hook
+It is a tiny(100 lines of code) fun project using React Hook. Basically what it do is fragmentizing an image, scatter the image pieces, then restore the parts back to a whole image at the position of your choice.
 ![1](src/images/1.png)
+Double Click on a point in the browser
 ![2](src/images/2.png)
+Image starts shattering
 ![3](src/images/3.png)
+Image fragments move and rotation randomly toward target point
 ![4](src/images/4.png)
+Parts start converging to the final position
 ![5](src/images/5.png)
-![6](src/images/6.png)
-
-* React is used
-* Only 100 lines of code
-
-![fragments](src/images/fragments.png)
-
-7x7=49 images combined as a whole image
-
+The image is restored as a whole at destination point.
 
 
 ### Basic ideas
 * Create a matrix of *div* elements, each div contains an *img* element
+![fragments](src/images/fragments.png)
 * Use *position: aboslute* to control the position and size of each *div* in the grid
-* Use *transform: translate(x,y)* and *overflow: hidden* to crop images into correct positions so that they can make up a whole image
-* To create shattered image effect, use random number to create different tranlations/rotations for each *div*
-* Use *setTimeout* to wait the scattering finish, then set the transitions of the divs to the same values to restore the fragments to a whole image.
+* Use *transform: translate(x,y)* and *overflow: hidden* of the *div* to crop images into a calculated positions so that they can make up a whole image
+* To generate shattered image effect, use random number to create different tranlations/rotations for each *div*
+* Use *setTimeout* to wait for the scattering to finish, then set all the transitions of the divs to the offset of the target point, this will restore the fragments to a whole image at difference point.
 
 
 

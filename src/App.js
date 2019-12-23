@@ -1,9 +1,9 @@
 import React from 'react';
-import SliceImage from './SliceImage'
+import ShatterImage from './ShatterImage'
 function App() {
 
   return (
-    <SliceImage />
+    <ShatterImage />
 );
 }
 

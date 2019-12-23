@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import I1 from './images/bread.jpg'
 
-export default function SliceImage({ numberOfSlices = 7, initialH = 120 }) {
+export default function ShatterImage({ numberOfSlices = 7, initialH = 120 }) {
     const [loaded, setLoaded] = useState(false);
     const [imgSize, setImgSize] = useState([]);
     const [transTime, setTransTime] = useState(4);
