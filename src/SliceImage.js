@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import I1 from './images/1.jpg'
+import I1 from './images/bread.jpg'
 
-export default function SliceImage({ numberOfSlices = 4, initialH = 200 }) {
+export default function SliceImage({ numberOfSlices = 7, initialH = 120 }) {
     const [loaded, setLoaded] = useState(false);
     const [imgSize, setImgSize] = useState([]);
     const [transTime, setTransTime] = useState(4);
@@ -16,9 +16,10 @@ export default function SliceImage({ numberOfSlices = 4, initialH = 200 }) {
     }
     const sliceDiv = {
         position: 'absolute',
-        height: `${initialH / numberOfSlices}px`,
+        height: `${Math.ceil(initialH / numberOfSlices)}px`,
         overflow: 'hidden',
         transition: `${transTime}s ease-in-out`,
+        // border:'1px dotted lightblue'
     }
 
     const imageStyle = {
@@ -54,20 +55,20 @@ export default function SliceImage({ numberOfSlices = 4, initialH = 200 }) {
     }
     const transferImg = () => {
         // spread out the parts
-        setTransTime(3);
+        setTransTime(2);
         let dt = window.innerWidth / 2
         for (let i = 0; i < numberOfSlices * numberOfSlices; i++) {
             divRef.current[i].style.transform = `translate(${getRandomInt(dt)}px,${getRandomInt(dt)}px) rotate(${getRandomInt(numberOfSlices)+1}turn)`;
         }
         // wait transition finish, start move parts back
         setTimeout(() => {
-            setTransTime(3);
+            setTransTime(2);
             for (let i = 0; i < numberOfSlices * numberOfSlices; i++) {
                 setTimeout(() => {
                     divRef.current[i].style.transform = `${targetLocation} rotate(${getRandomInt(numberOfSlices)}turn)`;
                 }, getRandomInt(window.innerWidth / 2))
             }
-        }, 3000);
+        }, 2000);
 
     }
 
