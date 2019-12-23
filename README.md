@@ -11,7 +11,8 @@ This is a fun project to fragmentize an image, scatter the image parts, then res
 * only 100 lines of code
 
 ![fragments](src/images/fragments.png)
-sample of 7X7=49 images combined as a whole image
+
+sample of 7x7=49 images combined as a whole image
 
 ### Basic ideas
 * Create a matrix of <div> elements, each <div> contains an <img> element
