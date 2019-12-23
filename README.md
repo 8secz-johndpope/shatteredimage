@@ -17,9 +17,11 @@ The image is restored as a whole at destination point.
 ![5](src/images/5.png)
 
 ### Basic ideas
-* Create a matrix of *div* elements, each div contains an *img* element
+
 ![fragments](src/images/fragments.png)
 
+
+* Create a matrix of *div* elements, each div contains an *img* element
 * Use *position: aboslute* to control the position and size of each *div* in the grid
 * Use *transform: translate(x,y)* and *overflow: hidden* of the *div* to crop images into a calculated positions so that they can make up a whole image
 * To generate shattered image effect, use random number to create different tranlations/rotations for each *div*
