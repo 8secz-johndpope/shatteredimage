@@ -15,10 +15,10 @@ This is a fun project to fragmentize an image, scatter the image parts, then res
 sample of 7x7=49 images combined as a whole image
 
 ### Basic ideas
-* Create a matrix of <div> elements, each <div> contains an <img> element
-* Use *position: aboslute* to control the position and size of each <div> in the grid
+* Create a matrix of *div* elements, each div contains an *img* element
+* Use *position: aboslute* to control the position and size of each *div* in the grid
 * Use *transform: translate(x,y)* and *overflow: hidden* to crop images into correct positions so that they can make up a whole image
-* To scatter the fragmentized image, use random number to create different tranlations/rotations for each <div>
+* To scatter the fragmentized image, use random number to create different tranlations/rotations for each *div*
 * Use setTimeout to wait the scattering finish, then set the transitions of the divs to the same values to restore the fragments to a whole image.
 
 
