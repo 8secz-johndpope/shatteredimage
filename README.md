@@ -1,10 +1,10 @@
 ## Shattered Image Effect with React Hook
-It is a tiny(100 lines of code) fun project using React Hook. Basically what it do is fragmentizing an image, scatter the image pieces, then restore the parts back to a whole image at the position of your choice.
+It is a tiny(100 lines of code) fun project using React Hook. Basically what it does is that it fragments an image, scatters the image pieces, and then restores the parts back to a whole image at the position of your choice.
 
 Double Click on a point in the browser
 ![1](src/images/1.png)
 
-Image starts shattering
+The image starts shattering
 ![2](src/images/2.png)
 
 Image fragments move and rotation randomly toward target point
@@ -13,7 +13,7 @@ Image fragments move and rotation randomly toward target point
 Parts start converging to the final position
 ![4](src/images/4.png)
 
-The image is restored as a whole at destination point.
+The image is restored as a whole at the destination point.
 ![5](src/images/5.png)
 
 ### Basic ideas
@@ -22,10 +22,10 @@ The image is restored as a whole at destination point.
 
 
 * Create a matrix of *div* elements, each div contains an *img* element
-* Use *position: aboslute* to control the position and size of each *div* in the grid
-* Use *transform: translate(x,y)* and *overflow: hidden* of the *div* to crop images into a calculated positions so that they can make up a whole image
-* To generate shattered image effect, use random number to create different tranlations/rotations for each *div*
-* Use *setTimeout* to wait for the scattering to finish, then set all the transitions of the divs to the offset of the target point, this will restore the fragments to a whole image at difference point.
+* Use *position: abosulate* to control the position and size of each *div* in the grid
+* Use *transform: translate(x,y)* and *overflow: hidden* of the *div* to crop images at the calculated position so that they can make up a whole image
+* To generate the shattered image effect, use random number to create different translations/rotations for each *div*
+* Use *setTimeout* to wait for the scattering to finish, then set all the transitions of the divs to the offset of the target point (This will restore the fragments to a whole image at a difference point).
 
 
 

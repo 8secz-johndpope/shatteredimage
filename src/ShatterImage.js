@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import I1 from './images/bread.jpg'
 
-export default function ShatterImage({ numberOfSlices = 7, initialH = 120 }) {
+export default function ShatterImage({ numberOfSlices: numberOfFragments = 10, initialH = 350 }) {
     const [loaded, setLoaded] = useState(false);
     const [imgSize, setImgSize] = useState([]);
     const [transTime, setTransTime] = useState(4);
@@ -14,9 +14,9 @@ export default function ShatterImage({ numberOfSlices = 7, initialH = 120 }) {
         position: 'relative',
         userSelect: 'none',
     }
-    const sliceDiv = {
+    const fragmentDiv = {
         position: 'absolute',
-        height: `${Math.ceil(initialH / numberOfSlices)}px`,
+        height: `${Math.ceil(initialH / numberOfFragments)}px`,
         overflow: 'hidden',
         transition: `${transTime}s ease-in-out`,
         // border:'1px dotted lightblue'
@@ -43,29 +43,27 @@ export default function ShatterImage({ numberOfSlices = 7, initialH = 120 }) {
         transferImg();
     }
     const onLoad = () => {
-
         setImgSize([sampleRef.current.naturalWidth, sampleRef.current.naturalHeight]);
         let r = containerRef.current.getBoundingClientRect();
-        // get image height
+        // get image width
         let dw = Math.ceil(initialH * sampleRef.current.naturalWidth / sampleRef.current.naturalHeight);
-        // position image in the middle of screen
+        // put image in the middle of screen
         imgPositionRef.current = [(r.width - dw) / 2, r.y];
-        console.log(imgPositionRef.current)
         setLoaded(true);
     }
     const transferImg = () => {
         // spread out the parts
         setTransTime(2);
         let dt = window.innerWidth / 2
-        for (let i = 0; i < numberOfSlices * numberOfSlices; i++) {
-            divRef.current[i].style.transform = `translate(${getRandomInt(dt)}px,${getRandomInt(dt)}px) rotate(${getRandomInt(numberOfSlices)+1}turn)`;
+        for (let i = 0; i < numberOfFragments * numberOfFragments; i++) {
+            divRef.current[i].style.transform = `translate(${getRandomInt(dt)}px,${getRandomInt(dt)}px) rotate(${getRandomInt(numberOfFragments)+1}turn)`;
         }
         // wait transition finish, start move parts back
         setTimeout(() => {
             setTransTime(2);
-            for (let i = 0; i < numberOfSlices * numberOfSlices; i++) {
+            for (let i = 0; i < numberOfFragments * numberOfFragments; i++) {
                 setTimeout(() => {
-                    divRef.current[i].style.transform = `${targetLocation} rotate(${getRandomInt(numberOfSlices)}turn)`;
+                    divRef.current[i].style.transform = `${targetLocation} rotate(${getRandomInt(numberOfFragments)}turn)`;
                 }, getRandomInt(window.innerWidth / 2))
             }
         }, 2000);
@@ -76,13 +74,13 @@ export default function ShatterImage({ numberOfSlices = 7, initialH = 120 }) {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
-    const getChopperRender = () => {
-        let dw = Math.ceil(initialH * imgSize[0] / imgSize[1] / numberOfSlices);
+    const getFragmentRender = () => {
+        let dw = Math.ceil(initialH * imgSize[0] / imgSize[1] / numberOfFragments);
         let ret = [];
-        for (let i = 0; i < numberOfSlices; i++) {
-            for (let j = 0; j < numberOfSlices; j++) {
-                ret.push(<div style={{ ...sliceDiv, top: `${Math.ceil(i * initialH / numberOfSlices)}px`, left: `${imgPositionRef.current[0] + dw * j}px`, width: `${dw}px` }} ref={(r) => { divRef.current[i * numberOfSlices + j] = r }}>
-                    <img src={I1} style={{ ...imageStyle, transform: `translate(${-dw * j}px,${Math.ceil(-i * initialH / numberOfSlices)}px)` }}></img>
+        for (let i = 0; i < numberOfFragments; i++) {
+            for (let j = 0; j < numberOfFragments; j++) {
+                ret.push(<div style={{ ...fragmentDiv, top: `${Math.ceil(i * initialH / numberOfFragments)}px`, left: `${imgPositionRef.current[0] + dw * j}px`, width: `${dw}px` }} ref={(r) => { divRef.current[i * numberOfFragments + j] = r }}>
+                    <img src={I1} style={{ ...imageStyle, transform: `translate(${-dw * j}px,${Math.ceil(-i * initialH / numberOfFragments)}px)` }}></img>
                 </div>);
             }
         }
@@ -94,7 +92,7 @@ export default function ShatterImage({ numberOfSlices = 7, initialH = 120 }) {
             <div style={container} ref={containerRef}>
                 {/* whole image to get image size information */}
                 {!loaded && <img src={I1} style={imageStyle} ref={sampleRef}></img>}
-                {loaded && getChopperRender()}
+                {loaded && getFragmentRender()}
             </div>
         </>
     )
